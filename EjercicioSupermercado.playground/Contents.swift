@@ -41,7 +41,7 @@ func isFrequent(name:String)->Bool{
     }
     return result
 }
-   
+//Se arregla metiendo el diccionario por parámetro
 */
 
 // Paso 4
