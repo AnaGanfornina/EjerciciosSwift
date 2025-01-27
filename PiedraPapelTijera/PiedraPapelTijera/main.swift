@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Model
 
-enum Move:Int{
+enum Move:Int{ // FIXME: Estilo Move: Int {  (espacio entre dos puntos e Int)
     case rock = 0
     case paper = 1
     case scissors = 2
@@ -19,7 +19,7 @@ enum Move:Int{
 // MARK: - Impresion pantalla
 
 ///Función que imprime las opciones por pantalla
-func toPrint(){
+func toPrint(){ // FIXME: considera usar un nombre más descriptivo como printMenuOptions(). Te dejo una opción abajo con un formato más legible y válido en Swift
     print("Select an option")
     print("0 - Rock")
     print("1 - Paper")
@@ -27,18 +27,30 @@ func toPrint(){
     print("3 - Quit")
     print("-----------")
 }
+
+func printMenuOptions() {
+    print("""
+    Select an option
+    0 - Rock
+    1 - Paper
+    2 - Scissors
+    3 - Quit
+    -----------
+    """)
+}
+
 // MARK: - Read User Choice
 
 ///Función que lee el imput del usuario y lo devuelve en forma de entero
 ///Además se asegura de que no se introduzcan carácteres inválidos
-func readUserChoice()->Int{
+func readUserChoice()->Int{ // FIXME: Si usas -1 para el caso en el que haya un error, lo mejor es utilizar un opcional: func readUserChoice() -> Int? {
     toPrint()
     let userChoice = readLine()
     
     //Desempaquetamos el imput
     guard let unwrappedChoice = userChoice else{
         print("No has escrito nada")
-        return -1
+        return -1 // FIXME: Aquí cada vez que haya un caso como este que invalide el input del usuario, deberías devolver nil
     }
     //Nos aseguramos de que sea un número
     guard let userChoiceInt = Int(unwrappedChoice) else{
@@ -51,6 +63,7 @@ func readUserChoice()->Int{
         return -1
     }
     
+    // FIXME: Las funciones deben hacer una sola cosa, por lo que deberías separar esto de aquí (que no tiene nada que ver con leer la elección del usuario) de la elección del usuario. Aquí deberías devolver el valor que ha introducido el usuario y dejar que la función que llama a esta se encargue de decidir si es la opción de salida o no además de imprimir el mensaje
     if userChoiceInt == 3{
         print("Gracias por jugar! Adiós")
     }else{
@@ -64,18 +77,21 @@ func readUserChoice()->Int{
 // MARK: - IsExit
 
 ///Predicado que devuelve True en caso de que el usuario haya pulsado la opción de salida
-func isExit(userChoice: Int)->Bool{
-    return userChoice == Move.quit.rawValue
+func isExit(userChoice: Int)->Bool{ // FIXME: Estilo: deja espacios entre los tipos de retorno: func isExit(userChoice: Int) -> Bool {
+    return userChoice == Move.quit.rawValue // Buen uso de rawValue
 }
 // MARK: - Elección de la máquina
 
 ///Función que genera un número aleatorio para así atribuirle una jugada a la máquina
 ///Contiene un ForceUnwrap ya que es seguro que la máquina elegira un numero del 0 al 2
 func generateComputerChoice()->Int{
-    let randomInt = Int.random(in:0...2)
+    let randomInt = Int.random(in:0...100)
     let computerChoice = randomInt
-    print("El ordenador ha elegido \(Move(rawValue:computerChoice)!)\n")
-    //print("El ordenador ha elegido \(String(describing: Move(rawValue:computerChoice)))")  Cual sería la diferencia ?
+    // print("El ordenador ha elegido \(Move(rawValue:computerChoice)!)\n") // FIXME: La diferencia es que la de abajo con describing, si Move(rawValue: computerChoice) es nil, no la desempaqueta forzosamente. Este código puede causar un error que rompa el programa. Por lo tanto, es mejor usar la versión que pones a continuación porque si lo de arriba es nil, imprime nil.
+    
+    // Prueba a poner en la línea de arriba let randomInt = Int.random(in:0...100). Lo más probable es que computerChoice no sea válido y cuando se hace \(Move(rawValue:computerChoice)!) se genera el siguiente error PiedraPapelTijera/main.swift:90: Fatal error: Unexpectedly found nil while unwrapping an Optional value. Prueba con tu print y con el print de describing
+
+    print("El ordenador ha elegido \(String(describing: Move(rawValue:computerChoice)))")  // Si Move(rawValue: computerChoice) es nil imprime esto: El ordenador ha elegido nil
     return computerChoice
     
 }
@@ -84,10 +100,18 @@ func generateComputerChoice()->Int{
 ///Función que compara las elecciónes del jugador y del ordenador.
 ///Devuelve una tupla con el ganador y su movimiento o el empate y el movimiento que lo ha generado
 ///Contiene un foceUnWrap ya que nos hemos asegurado anteriormente de que el va a recibir un entero tanto en ReadUserChoce como en computer choice
-func combat(userChoice user: Int, computerChoice computer: Int)->(String, Move){
+func combat(userChoice user: Int, computerChoice computer: Int)->(String, Move){ // FIXME: nombre poco descriptivo -> vfunc determineRoundOutcome(userChoice user: Int, computerChoice computer: Int) -> (String, Move). Además, el retorno de la tupla es mejor nombrarlo: (winner: String, move: Move) igual que haces más abajo cuando declaras la variable
+
     var winner: (winner:String,move:Move)
     
+    // FIXME: Con respecto a la duda switch vs if, queda más claro el switch. En cada uno de los casos, puedes retornar directamente la tupla:
+    /*
+     switch user {
+     case let x where x == computer:
+         return ("empate", Move(rawValue: computer)!)
+     */
     
+    // FIXME: El problema de este swithc es que mezclas empate que es un resultado con el ganador. Puedes decir el resultado: User gana, computer gana, empata. De esta manera tienes de retorno la tupla (combatResult :String, move: Move)
     switch user{
     case let x where x == computer:
         winner = ("empate", Move(rawValue: computer)!)
@@ -131,8 +155,6 @@ func printWinner(winner: (String, Move)){
     }else{
         print("Es un empate habeis elegido \(winner.1)")
     }
-    
-    
 }
 // MARK: - Game
 
@@ -142,7 +164,7 @@ func game(){
     
     var userChoice = readUserChoice()
     
-    while !isExit(userChoice: userChoice){
+    while !isExit(userChoice: userChoice){ // FIXME: Bien gestionado el bucle y buena separación de responsabilidades, aunque las opciones las imprmiría justo antes de readUserChoice y no dentro de la función. El resto muy bien
         let computerChoice =  generateComputerChoice()
         let winner = combat(userChoice: userChoice, computerChoice: computerChoice)
         printWinner(winner: winner)
