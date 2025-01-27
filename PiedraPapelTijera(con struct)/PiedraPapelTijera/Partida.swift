@@ -10,8 +10,7 @@ import Foundation
 struct Partida{
     let jugador1: Jugador
     let jugador2: Jugador
-    
-    var winner: Jugador = Jugador(tipo: TipoJugador.person)//es un de tipo person con jugada inválida
+    var winner: Jugador? //FIXME: de esta manera, winner es nil hasta que se inicialice 
     var isDraw: Bool = false
     
     mutating func fight(){
