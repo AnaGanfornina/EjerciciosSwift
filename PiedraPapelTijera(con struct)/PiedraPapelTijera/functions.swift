@@ -92,16 +92,16 @@ func generateComputerChoice()->Move{
 ///Función que compara las elecciónes del jugador y del ordenador.
 ///Devuelve una tupla con el ganador y su movimiento o el empate y el movimiento que lo ha generado
 ///Contiene un foceUnWrap ya que nos hemos asegurado anteriormente de que el va a recibir un entero tanto en ReadUserChoce como en computer choice
-func combat(userChoice user: Jugador, computerChoice computer: Jugador)->Jugador{
+func combat(userChoice user: Jugador, computerChoice computer: Jugador) -> Jugador? {
     var winner: Jugador
     
   
-    switch user{
-    case let x where x.jugadaActual.tipo ==
+    switch user {
+    case let x where x.jugadaActual.tipo == computer.jugadaActual.tipo:
         //Realmente aquí es donde me quede bloqueada y no sabía muy bien qué hacer
-        computer.jugadaActual.tipo:
-        winner = x
-        winner.jugadaActual.isDraw = true
+        // FIXME: Ponemos Jugador? en el retorno de la función, lo que indica que si en el combate hay un ganador se retorna un tipo Jugador, pero si no, se retorna nil. Esto, después de setear is draw a true, nos permitiría retornar nil. Esta sería la implementación lógica de la función según la manera Swift de programar las cosas
+        winner.jugadaActual.isDraw = true // FIXME: Este código te tira un error porque para establecer la propiedad jugadaActual de winner, primero tiene que haber un winner. Aquí el error es conceptual, ya que la jugada no es algo que perteneza al jugador, sino al juego. Si quieres modelar esto así, debería haber un jugador que fuera drawPlayer que sea el jugador establecido para el empate.
+        return nil
     case let x where x.jugadaActual.tipo == Move.paper && (computer.jugadaActual.tipo == Move.rock || computer.jugadaActual.tipo != Move.scissors):
         winner = user
         winner.jugadaActual.isDraw = false
@@ -122,7 +122,11 @@ func combat(userChoice user: Jugador, computerChoice computer: Jugador)->Jugador
 ///Función que imprime el ganador por pantalla así como la jugada ganadora. En caso de empate devuelve dicha opción con la jugada de ambos participantes
 /// * Parámetro: tupla con el ganador(String) y el movimiento realizado
 
-func printWinner(winner: Jugador){
+func printWinner(winner: Jugador?){
+    guard let winner = winner else {
+        print("Winner es nil en printWinner")
+        return
+    }
     let winnerStr = winner.tipo
     let jugada = (String(describing: winner.jugadaActual.tipo))
     if winner.jugadaActual.isDraw{
