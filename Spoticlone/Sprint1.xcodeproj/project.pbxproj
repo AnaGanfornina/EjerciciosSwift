@@ -32,6 +32,7 @@
 				Datasource/SongModels.swift,
 				Datasource/songs.json,
 				Datasource/SongsLoader.swift,
+				"Datasource/Style .swift",
 				main.swift,
 			);
 			target = 872AA6FD2D3ED09C00686774 /* Sprint1Testing */;
