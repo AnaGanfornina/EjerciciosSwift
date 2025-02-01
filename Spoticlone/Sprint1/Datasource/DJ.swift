@@ -29,9 +29,5 @@ struct DJ {
     mutating func addPlaylist(_ playlist: Playlist) {
         DJplaylist = playlist
     }
-    /*
-    mutating func createPlaylist() {
-        DJplaylist = []
-    }
-     */
+    
 }
