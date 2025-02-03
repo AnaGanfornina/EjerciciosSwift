@@ -10,24 +10,35 @@ import Foundation
 struct DJ {
     let name: String
     var DJplaylist: Playlist?
-    let DJstyle: [Style]
+    var DJstyle: [Style]
     
-    func play(playlist: [Song],_ delay: Int = 5) {
+    func play(playlist: Playlist,_ delay: Int = 5) {
         
-        guard DJplaylist == nil else {
-            print("no hay playlist")
-            return
-        }
         
-        for song in playlist {
+        
+        for song in playlist.songs {
             print(song.basicInfo.title)
             sleep(UInt32(delay))
         }
         print("Fin de la playlist")
     }
     
+    mutating func createPlaylist(_ name: String, songs: [Song]) {
+        
+        let newPlaylist = Playlist(name: "Playlist1")
+        
+        DJplaylist = newPlaylist
+            
+        
+        
+    
+    }
     mutating func addPlaylist(_ playlist: Playlist) {
         DJplaylist = playlist
+    }
+    
+    mutating func changeStyle(newStyle: String) {
+        self.DJstyle = [Style(name: newStyle)]
     }
     
 }

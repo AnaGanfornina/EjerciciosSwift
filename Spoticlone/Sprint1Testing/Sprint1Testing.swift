@@ -37,7 +37,7 @@ class Sprint1Testing {
         
         @Test func whenSongsDoNotContainArcticMonkeysButIsNotEmpty_thenReturnEmpty() async throws {
             try #require(songs.count > 0, "El array de canciones no puede estar vacío")
-            #expect(Main().getSongsFromArtist("Arctic Monkeys", inSongs: songs).count == 0, "Se espera que no haya ninguna canción de ArcticMonkeys ya que el array de canciones pasado no contiene ninguna canción de ArcticMonkeys")
+            #expect(mainInstance.getSongsFromArtist("Arctic Monkeys", inSongs: songs).count == 0, "Se espera que no haya ninguna canción de ArcticMonkeys ya que el array de canciones pasado no contiene ninguna canción de ArcticMonkeys")
         }
     }
     @Suite("getSongLongerThan")

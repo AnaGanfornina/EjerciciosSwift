@@ -23,7 +23,7 @@ struct Style {
 
         self.name = StyleList(name: name)
         
-        ToFill(name: self.name)
+        toFill(name: self.name)
         
     }
     
@@ -60,7 +60,7 @@ struct Style {
          
     }
     
-    mutating func ToFill(name: StyleList)  {
+    mutating func toFill(name: StyleList)  {
 
         switch name {
         case .chillVibes:
@@ -89,7 +89,6 @@ struct Style {
         }
         
     }
-        
     }
 
 //styleList(name: "ChillVibes")

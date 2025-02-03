@@ -11,10 +11,12 @@ struct Playlist {
     var songs: [Song] = []
     
     
-    
-    mutating func addSong(_ song: [Song]) {
+    mutating func addSong (_ song: Song){
+        songs.append(song)
+    }
+    mutating func addSongs(_ song: [Song]) {
         for item in song {
-            songs.append(item)
+            addSong(item)
         }
     }
     mutating func removeSong(_ song:[Song]) {
@@ -57,17 +59,19 @@ struct Playlist {
     mutating func orderByBPM() {
         songs.sort {$0.technicalInfo.bpm < $1.technicalInfo.bpm}
     }
+   
+    // MARK: -Esta se me queda atascada
     /*
     mutating func orderByKey() {
         let keys = ["Cb","C","C#","Db","D","D#",
                     "Eb","E","E#","Fb","F","F#",
                     "Gb","G","G#","Ab","A","A#",
                     "Bb","B","B#"]
-        for key in keys {
-            songs.sort(by: <#T##(Song, Song) throws -> Bool#>)
-            }
+        
+        songs.sort { keys.firstIndex(where: $0.technicalInfo.key) > keys.firstIndex(where: $1.technicalInfo.key) ? $0 : $1
         }
-    
     }
+     
      */
+     
 }
