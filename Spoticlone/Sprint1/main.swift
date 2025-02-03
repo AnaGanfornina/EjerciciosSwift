@@ -13,7 +13,7 @@ Main().main() // Ejecutamos el programa
 class Main {
     
     let logger = Logger(subsystem: "Sprint1", category: "main")
-
+    
     // MARK: - Main
     func main() {
         
@@ -22,14 +22,14 @@ class Main {
         var nuevoDJ = DJ(name: "Isma", DJstyle: []) //Creamos un DJ
         nuevoDJ.changeStyle(newStyle: "Party Starter") //Le añadimos un estilo
         
-       
+        
         //cramos playlist
         
         nuevoDJ.createPlaylist("newPlaylist", songs: [])
         
         
         //Añadimos dos canciones a la playlist
-       
+        
         nuevoDJ.DJplaylist?.addSongs(getSongsFromArtist("Oasis", inSongs: songs))
         
         nuevoDJ.DJplaylist?.addSongs(getSongsFromArtist("Radiohead", inSongs: songs))
@@ -37,70 +37,70 @@ class Main {
         //Reproducimos playlist
         
         guard let unwrapedPlaylist = nuevoDJ.DJplaylist else {
-            print ("No se ha podido reproducir la playlist")
+            print("No se ha podido reproducir la playlist")
             return
         }
         nuevoDJ.play(playlist: unwrapedPlaylist)
         
         
         
-      // MARK: Prueba para testear Style
+        // MARK: Prueba para testear Style
         /*
-        var estilo = Style(name: "Party Starter")
-        
-        guard let unwrapedDescription = estilo.description else {
-            print(StyleError.notDescription)
-            return
-        }
-        print(estilo.name)
-        print(unwrapedDescription)
-        
-        guard let unwrapedTags = estilo.tags else {
-            print(StyleError.notTags)
-            return
-        }
-        print(unwrapedTags)
+         var estilo = Style(name: "Party Starter")
+         
+         guard let unwrapedDescription = estilo.description else {
+         print(StyleError.notDescription)
+         return
+         }
+         print(estilo.name)
+         print(unwrapedDescription)
+         
+         guard let unwrapedTags = estilo.tags else {
+         print(StyleError.notTags)
+         return
+         }
+         print(unwrapedTags)
          */
         
         // MARK: Prueba para testear Dj
         
         /*
-        let nuevoDJ = DJ(name: "Isma", DJstyle: [estilo])
-        print(nuevoDJ.name)
-        print(nuevoDJ.DJstyle[0].name)
+         let nuevoDJ = DJ(name: "Isma", DJstyle: [estilo])
+         print(nuevoDJ.name)
+         print(nuevoDJ.DJstyle[0].name)
          */
         
         // MARK: Prueba para comprobar matchingGenre
         /*
-        let songs = SongsLoader().songs
-        let cancion1 = songs[0]
-        let cancion2 = songs[91]
-        mathcinGenre(firstSong: cancion1, secondSong: cancion2)
-          */
+         let songs = SongsLoader().songs
+         let cancion1 = songs[0]
+         let cancion2 = songs[91]
+         mathcinGenre(firstSong: cancion1, secondSong: cancion2)
+         */
         
         // MARK: Prueba para comprobar matchingBpm
-            
-        /*
-        let cancion1 = songs[95]
-        let cancion2 = songs[88]
-        print(matchingBpm(firstSong: cancion1, secondSong: cancion2))
         
-        */
+        /*
+         let cancion1 = songs[95]
+         let cancion2 = songs[88]
+         print(matchingBpm(firstSong: cancion1, secondSong: cancion2))
+         
+         */
         // MARK: Prueba para comprobar matchingBpm
         /*
-        let cancion1 = songs[93]
-        let cancion2 = songs[93]
-       
-        print(mathcingTags(firstSong: cancion1, secondSong: cancion2))
-        */
+         let cancion1 = songs[93]
+         let cancion2 = songs[93]
+         
+         print(mathcingTags(firstSong: cancion1, secondSong: cancion2))
+         */
         
         // MARK: Prueba para comprobar matchingPopularity
         /*
-        let cancion1 = songs[18]
-        let cancion2 = songs[48]
-        
-        print(matchingPopularity(firstSong: cancion1, secondSong: cancion2))
-        */
+         let cancion1 = songs[18]
+         let cancion2 = songs[48]
+         
+         print(matchingPopularity(firstSong: cancion1, secondSong: cancion2))
+         */
         
         // MARK: Prueba para comprobar matchingKey
         
@@ -110,7 +110,7 @@ class Main {
         print(matchingKey(firstSong: cancion1, secondSong: cancion2))
         
         
-        
+    }
         
         // MARK: - Búsquedas y filtrados básicos
         func getSongsFromArtist(_ artist: String, inSongs songs: [Song]) -> [Song] {
@@ -184,7 +184,7 @@ class Main {
         }
         // MARK: - Función mathcinGenre
         
-
+        
         func mathcinGenre(firstSong:Song, secondSong: Song ) -> Double {
             
             let genreDictionary = [
@@ -195,20 +195,20 @@ class Main {
                 "Electropop": ["Pop", "Dance-Pop", "Industrial Rock"],
                 "Indie-Pop": ["Pop", "Pop-Rock", "Indie"],
                 "Britpop": ["Pop", "Rock", "Indie"],
-
+                
                 // Rock y derivados
                 "Rock": ["Pop-Rock", "Indie Rock", "Alternative Rock"],
                 "Indie Rock": ["Rock", "Alternative Rock", "Indie"],
                 "Alternative Rock": ["Rock", "Indie Rock", "Industrial Rock"],
                 "Industrial Rock": ["Alternative Rock", "Electropop"],
                 "Indie": ["Indie Rock", "Indie-Pop", "Britpop"],
-
+                
                 // R&B y géneros relacionados
                 "R&B": ["Soul", "Hip-Hop"],
                 "Soul": ["R&B", "Disco"],
                 "Hip-Hop": ["R&B", "Dance-Pop"],
                 "Disco": ["Dance-Pop", "Soul"],
-
+                
                 // Otros
                 "Soundtrack": ["Orchestral", "Pop", "Rock"] // Género versátil que puede relacionarse con varios
             ]
@@ -370,7 +370,7 @@ class Main {
             return total
         }
     }
-}
+
 
 
 
