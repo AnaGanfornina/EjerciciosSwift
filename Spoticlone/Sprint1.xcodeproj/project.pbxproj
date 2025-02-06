@@ -27,13 +27,15 @@
 		872AA7092D3ED0BC00686774 /* Exceptions for "Sprint1" folder in "Sprint1Testing" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Datasource/DJ.swift,
-				Datasource/Playlist.swift,
-				Datasource/SongModels.swift,
 				Datasource/songs.json,
+				Datasource/SongsData.swift,
 				Datasource/SongsLoader.swift,
-				"Datasource/Style .swift",
 				main.swift,
+				Models/Discover.swift,
+				Models/DJ.swift,
+				Models/Playlist.swift,
+				Models/SongModels.swift,
+				"Models/Style .swift",
 			);
 			target = 872AA6FD2D3ED09C00686774 /* Sprint1Testing */;
 		};
@@ -340,7 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 94HWZ76SXD;
+				DEVELOPMENT_TEAM = DRKH5MTLPD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -351,7 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 94HWZ76SXD;
+				DEVELOPMENT_TEAM = DRKH5MTLPD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -363,7 +365,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 94HWZ76SXD;
+				DEVELOPMENT_TEAM = DRKH5MTLPD;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = KeepCoding.Sprint1Testing;
@@ -378,7 +380,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 94HWZ76SXD;
+				DEVELOPMENT_TEAM = DRKH5MTLPD;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = KeepCoding.Sprint1Testing;

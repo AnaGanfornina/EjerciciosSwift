@@ -31,7 +31,7 @@ struct TestData {
         "isrc": "USUM71920298"
       },
       "metadata": {
-        "tags": ["80s", "synthwave", "dance"],
+        "tags": ["80s", "summer", "dance"],
         "language": "en",
         "popularity": 95
       }
@@ -53,7 +53,7 @@ struct TestData {
         "isrc": "GBUM72001564"
       },
       "metadata": {
-        "tags": ["disco", "dance", "summer"],
+        "tags": ["summer", "chill", "pop"],
         "language": "en",
         "popularity": 90
       }
@@ -77,7 +77,7 @@ struct TestData {
       "metadata": {
         "tags": ["summer", "chill", "pop"],
         "language": "en",
-        "popularity": 88
+        "popularity": 92
       }
     },
     {
@@ -92,7 +92,7 @@ struct TestData {
         "isExplicit": true
       },
       "technicalInfo": {
-        "bpm": 170,
+        "bpm": 110,
         "key": "D",
         "isrc": "USHR12100112"
       },
@@ -121,9 +121,76 @@ struct TestData {
       "metadata": {
         "tags": ["pride", "anthem", "confidence"],
         "language": "en",
-        "popularity": 94
+        "popularity": 40
       }
-    }]
+    },
+    {
+      "id": "6",
+      "basicInfo": {
+        "title": "Bad Guy",
+        "artist": "Billie Eilish",
+        "duration_ms": 194000,
+        "genre": "Electropop",
+        "album": "When We All Fall Asleep, Where Do We Go?",
+        "releaseDate": "2019-03-29",
+        "isExplicit": true
+      },
+      "technicalInfo": {
+        "bpm": 135,
+        "key": "G#",
+        "isrc": "USUM71902675"
+      },
+      "metadata": {
+        "tags": ["pride", "anthem", "fun", "chill"],
+        "language": "en",
+        "popularity": 20
+      }
+    },
+    {
+      "id": "7",
+      "basicInfo": {
+        "title": "I Will Survive",
+        "artist": "Gloria Gaynor",
+        "duration_ms": 240000,
+        "genre": "Disco",
+        "album": "Love Tracks",
+        "releaseDate": "1978-10-23",
+        "isExplicit": false
+      },
+      "technicalInfo": {
+        "bpm": 117,
+        "key": "A",
+        "isrc": "USG789800022"
+      },
+      "metadata": {
+        "tags": ["pride", "anthem"],
+        "language": "en",
+        "popularity": 100
+      }
+    },
+    {
+      "id": "8",
+      "basicInfo": {
+        "title": "I Really Like You",
+        "artist": "Carly Rae Jepsen",
+        "duration_ms": 196000,
+        "genre": "Pop",
+        "album": "Emotion",
+        "releaseDate": "2015-03-02",
+        "isExplicit": false
+      },
+      "technicalInfo": {
+        "bpm": 120,
+        "key": "C",
+        "isrc": "USCA21511311"
+      },
+      "metadata": {
+        "tags": ["flirty", "happy", "pop"],
+        "language": "en",
+        "popularity": 0
+      }
+    }
+    ]
 }
 """.data(using: .utf8)
     }
